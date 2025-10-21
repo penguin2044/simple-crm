@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="customer-card" style="border: 1px solid #ddd; padding: 20px; margin: 10px; border-radius: 8px;">
+  <div style="display: flex; gap: 20px; align-items: start;">
+    <div style="flex-shrink: 0;">
+      <% if customer.image.attached? %>
+        <%= image_tag customer.image, style: "width: 100px; height: 100px; object-fit: cover; border-radius: 50%;" %>
+      <% else %>
+        <div style="width: 100px; height: 100px; background: #eee; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+          No Image
+        </div>
+      <% end %>
+    </div>
+
+    <div style="flex-grow: 1;">
+      <h3 style="margin: 0 0 10px 0;"><%= customer.full_name %></h3>
+
+      <% if customer.phone_number.present? %>
+        <p style="margin: 5px 0;"><strong>Phone:</strong> <%= customer.phone_number %></p>
+      <% end %>
+
+      <% if customer.email.present? %>
+        <p style="margin: 5px 0;"><strong>Email:</strong> <%= customer.email %></p>
+      <% else %>
+        <p style="margin: 5px 0; color: #999;"><strong>Email:</strong> Not provided</p>
+      <% end %>
+
+      <% if customer.notes.present? %>
+        <p style="margin: 10px 0 0 0;"><strong>Notes:</strong> <%= customer.notes %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
+</body>
+</html>
